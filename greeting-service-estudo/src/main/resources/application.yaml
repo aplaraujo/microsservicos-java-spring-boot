@@ -3,3 +3,17 @@ server:
 spring:
   application:
     name: greeting-service-estudo
+  config:
+    import: optional:configserver:http://localhost:8888/
+  cloud:
+    config:
+      profile: it
+  management:
+    endpoints:
+      web:
+        exposure:
+          include:
+            _ '*'
+    endpoint:
+      health:
+        show-details: ALWAYS
