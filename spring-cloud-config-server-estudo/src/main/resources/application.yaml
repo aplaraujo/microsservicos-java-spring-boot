@@ -3,6 +3,12 @@ server:
 spring:
   application:
     name: spring-cloud-config-server-estudo
-  profiles:
-    active:
-      - native
+  cloud:
+    config:
+      server:
+        git:
+          uri: https://github.com/aplaraujo/spring-config-server-estudo
+          search-paths: 'greeting-service'
+#  profiles:
+#    active:
+#      - native
