@@ -1,3 +1,17 @@
 spring:
   application:
     name: rest-api-com-spring-boot-java-estudo
+
+logging:
+  pattern:
+    console: '%clr(%d{dd-MM-yyyy HH:mm:ss}){faint} %clr(%5p) %clr([%t]){faint} %clr(%-40.40logger){cyan} %clr(:){yellow} %m%n'
+  file:
+    name: app.log
+  level:
+    root: warn
+    io:
+      github:
+        aplaraujo: trace
+    org:
+      springframework:
+        web: debug
