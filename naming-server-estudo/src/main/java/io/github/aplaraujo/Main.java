@@ -2,12 +2,14 @@ package io.github.aplaraujo;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
+import org.springframework.cloud.netflix.eureka.server.EnableEurekaServer;
 
 @SpringBootApplication
-public class NamingServerEstudoApplication {
+@EnableEurekaServer
+public class Main {
 
 	public static void main(String[] args) {
-		SpringApplication.run(NamingServerEstudoApplication.class, args);
+		SpringApplication.run(Main.class, args);
 	}
 
 }
