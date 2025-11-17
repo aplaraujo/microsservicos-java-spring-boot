@@ -33,7 +33,8 @@ public class BookController {
         var book = bookRepository.findById(id).orElseThrow();
         ExchangeDTO dto = exchangeProxy.getExchange(BigDecimal.valueOf(book.getPrice()), "USD", currency);
 
-        book.setEnvironment(port + " FEIGN");
+        // book.setEnvironment(port + " FEIGN");
+        book.setEnvironment("BOOK PORT: " + port + " EXCHANGE PORT: " + dto.getEnvironment());
         assert dto != null;
         book.setPrice(dto.getConvertedValue().doubleValue());
         book.setCurrency(currency);
