@@ -1,6 +1,5 @@
 package io.github.aplaraujo.dto;
 
-import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -18,6 +17,6 @@ public class ExchangeDTO {
     private String from;
     private String to;
     private BigDecimal conversionFactor;
-    private BigDecimal convertedValue;
+    private Double convertedValue;
     private String environment;
 }

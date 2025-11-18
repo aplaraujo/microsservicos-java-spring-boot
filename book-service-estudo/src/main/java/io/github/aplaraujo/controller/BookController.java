@@ -35,8 +35,7 @@ public class BookController {
 
         // book.setEnvironment(port + " FEIGN");
         book.setEnvironment("BOOK PORT: " + port + " EXCHANGE PORT: " + dto.getEnvironment());
-        assert dto != null;
-        book.setPrice(dto.getConvertedValue().doubleValue());
+        book.setPrice(dto.getConvertedValue());
         book.setCurrency(currency);
 
         return book;

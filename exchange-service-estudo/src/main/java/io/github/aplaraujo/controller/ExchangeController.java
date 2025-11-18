@@ -3,7 +3,6 @@ package io.github.aplaraujo.controller;
 import io.github.aplaraujo.environment.InstanceInformationService;
 import io.github.aplaraujo.model.Exchange;
 import io.github.aplaraujo.repository.ExchangeRepository;
-import lombok.RequiredArgsConstructor;
 import org.springframework.http.MediaType;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -14,12 +13,16 @@ import java.math.BigDecimal;
 
 @RestController
 @RequestMapping(value = "/exchange-service")
-@RequiredArgsConstructor
 public class ExchangeController {
     // http://localhost:8000/exchange-service/5/USD/BRL
 
     private final ExchangeRepository exchangeRepository;
     private final InstanceInformationService informationService;
+
+    public ExchangeController(ExchangeRepository exchangeRepository, InstanceInformationService informationService) {
+        this.exchangeRepository = exchangeRepository;
+        this.informationService = informationService;
+    }
 
     @GetMapping(value = "/{amount}/{from}/{to}", produces = MediaType.APPLICATION_JSON_VALUE)
     public Exchange getExchange(
