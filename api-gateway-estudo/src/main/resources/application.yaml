@@ -1,12 +1,22 @@
 spring:
   application:
     name: api-gateway-estudo
-#  cloud:
-#    gateway:
-#      discovery:
-#        locator:
-#          enabled: true
-#          lower-case-service-id: true
+  cloud:
+    gateway:
+      routes:
+        - id: book-service
+          uri: lb://BOOK-SERVICE-ESTUDO
+          predicates:
+            - Path=/book-service/**
+          filters:
+            - RewritePath=/book-service(?<segment>/?.*), /book-service${segment}
+
+        - id: exchange-service
+          uri: lb://EXCHANGE-SERVICE-ESTUDO
+          predicates:
+            - Path=/exchange-service/**
+          filters:
+            - RewritePath=/exchange-service(?<segment>/?.*), /exchange-service${segment}
 
 server:
   port: 9000
