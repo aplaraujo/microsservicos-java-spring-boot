@@ -3,6 +3,8 @@ package io.github.aplaraujo.controller;
 import io.github.aplaraujo.environment.InstanceInformationService;
 import io.github.aplaraujo.model.Exchange;
 import io.github.aplaraujo.repository.ExchangeRepository;
+import io.swagger.v3.oas.annotations.Operation;
+import io.swagger.v3.oas.annotations.tags.Tag;
 import org.springframework.http.MediaType;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -11,6 +13,7 @@ import org.springframework.web.bind.annotation.RestController;
 
 import java.math.BigDecimal;
 
+@Tag(name = "Exchange Endpoint")
 @RestController
 @RequestMapping(value = "/exchange-service")
 public class ExchangeController {
@@ -24,6 +27,7 @@ public class ExchangeController {
         this.informationService = informationService;
     }
 
+    @Operation(summary = "Get exchange from specific amount")
     @GetMapping(value = "/{amount}/{from}/{to}", produces = MediaType.APPLICATION_JSON_VALUE)
     public Exchange getExchange(
             @PathVariable(name = "amount") BigDecimal amount,
