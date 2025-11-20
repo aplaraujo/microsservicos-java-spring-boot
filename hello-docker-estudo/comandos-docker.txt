@@ -11,3 +11,9 @@ docker run -p 80:80 -d hello-docker-estudo:0.0.1-SNAPSHOT
 docker container ps
 
 docker ps
+
+docker tag hello-docker-estudo:0.0.1-SNAPSHOT anapaulalopesaraujo/hello-docker-estudo:0.0.1-SNAPSHOT
+
+docker login docker.io
+
+docker push anapaulalopesaraujo/hello-docker-estudo:0.0.1-SNAPSHOT
