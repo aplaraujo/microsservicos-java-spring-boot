@@ -9,26 +9,30 @@ spring:
           uri: lb://BOOK-SERVICE-ESTUDO
           predicates:
             - Path=/book-service/v3/api-docs
+          order: 1
 
         - id: exchange-service-openapi
           uri: lb://EXCHANGE-SERVICE-ESTUDO
           predicates:
             - Path=/exchange-service/v3/api-docs
+          order: 1
 
         # Rotas genéricas dos serviços
         - id: book-service
           uri: lb://BOOK-SERVICE-ESTUDO
           predicates:
             - Path=/book-service/**
-          filters:
-            - RewritePath=/book-service/(?<segment>.*), /$\{segment}
+#          filters:
+#            - RewritePath=/book-service/(?<segment>.*), /$\{segment}
+          order: 2
 
         - id: exchange-service
           uri: lb://EXCHANGE-SERVICE-ESTUDO
           predicates:
             - Path=/exchange-service/**
-          filters:
-            - RewritePath=/exchange-service/(?<segment>.*), /$\{segment}
+#          filters:
+#            - RewritePath=/exchange-service/(?<segment>.*), /$\{segment}
+          order: 2
 
 server:
   port: 9000
