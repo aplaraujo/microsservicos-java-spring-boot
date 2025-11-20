@@ -33,6 +33,12 @@ spring:
 #          filters:
 #            - RewritePath=/exchange-service/(?<segment>.*), /$\{segment}
           order: 2
+  management:
+    tracing:
+      sampling:
+        probability: 1.0
+  zipkin:
+    base-url: http://localhost:9411
 
 server:
   port: 9000
