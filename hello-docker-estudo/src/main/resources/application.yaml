@@ -1,0 +1,6 @@
+spring:
+  application:
+    name: hello-docker-estudo
+
+server:
+  port: 80
