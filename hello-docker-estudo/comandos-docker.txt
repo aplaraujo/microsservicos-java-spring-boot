@@ -6,6 +6,8 @@ docker images
 
 docker image ls
 
+docker container ls -a
+
 docker run -p 80:80 -d hello-docker-estudo:0.0.1-SNAPSHOT
 
 docker container ps
@@ -17,3 +19,47 @@ docker tag hello-docker-estudo:0.0.1-SNAPSHOT anapaulalopesaraujo/hello-docker-e
 docker login docker.io
 
 docker push anapaulalopesaraujo/hello-docker-estudo:0.0.1-SNAPSHOT
+
+docker run anapaulalopesaraujo/hello-docker-estudo:0.0.1-SNAPSHOT
+
+docker container stop id
+
+docker logs id
+
+docker logs -f id
+
+docker pull nome-da-imagem
+
+docker tag anapaulalopesaraujo/hello-docker-estudo:0.0.1-SNAPSHOT anapaulalopesaraujo/hello-docker-estudo:latest
+
+docker search mysql --filter is-official=true
+
+docker image history mariadb
+
+docker image inspect mariadb
+
+docker remove mariadb
+
+docker rmi mariadb
+
+docker container pause id
+
+docker container unpause id
+
+docker container inspect id
+
+docker container prune
+
+docker container kill id
+
+docker run -d --restart=always anapaulalopesaraujo/hello-docker-estudo:latest
+
+docker events
+
+docker top id
+
+docker stats
+
+docker run -p 81:80 -m 512m --cpu-quota 5000 -d anapaulalopesaraujo/hello-docker-estudo:latest
+
+docker system df
