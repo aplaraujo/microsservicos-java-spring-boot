@@ -1,0 +1,5 @@
+mvn clean package
+
+docker build -t hello-docker-estudo:0.0.1-SNAPSHOT .
+
+docker images
