@@ -1,0 +1,12 @@
+services:
+  naming-server-estudo:
+    image: ananopaisdojavascript/naming-server-estudo:0.0.1-SNAPSHOT
+    ports:
+      - 8761:8761
+    networks:
+      - github-network
+
+networks:
+  github-network:
+    name: github-network
+    driver: bridge
