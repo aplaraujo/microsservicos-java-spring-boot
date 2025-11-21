@@ -3,6 +3,31 @@ services:
     image: ananopaisdojavascript/naming-server-estudo:0.0.1-SNAPSHOT
     ports:
       - 8761:8761
+    restart: always
+    depends_on:
+      - zipkin-server
+    networks:
+      - github-network
+
+  api-gateway:
+    image: ananopaisdojavascript/api-gateway:0.0.1-SNAPSHOT
+    ports:
+      - 9000:9000
+    restart: always
+    depends_on:
+      - zipkin-server
+      - naming-server-estudo
+    environment:
+      SPRING_ZIPKIN_BASEURL: http://zipkin-server:9411
+      EUREKA_CLIENT_SERVICEURL_DEFAULTZONE: http://naming-server-estudo:8761/eureka
+    networks:
+      - github-network
+
+  zipkin-server:
+    image: openzipkin/zipkin:3.5.1
+    ports:
+      - 9411:9411
+    restart: always
     networks:
       - github-network
 
