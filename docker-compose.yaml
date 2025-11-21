@@ -23,6 +23,34 @@ services:
     networks:
       - github-network
 
+  book-db:
+    image: mysql:9.3.0
+    ports:
+      - 3310:3306
+    restart: always
+    environment:
+      TZ: America/Sao_Paulo
+      MYSQL_ROOT_PASSWORD: docker
+      MYSQL_USER: docker
+      MYSQL_PASSWORD: docker
+      MYSQL_DATABASE: book_service
+    networks:
+      - github-network
+
+  exchange-db:
+    image: mysql:9.3.0
+    ports:
+      - 3308:3306
+    restart: always
+    environment:
+      TZ: America/Sao_Paulo
+      MYSQL_ROOT_PASSWORD: docker
+      MYSQL_USER: docker
+      MYSQL_PASSWORD: docker
+      MYSQL_DATABASE: exchange_service
+    networks:
+      - github-network
+
   zipkin-server:
     image: openzipkin/zipkin:3.5.1
     ports:
